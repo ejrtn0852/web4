@@ -1,3 +1,104 @@
+section {
+  width: 100%;
+  height: 28%;
+}
 .event--wrap {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.inner--img {
+  position: relative;
+  height: 100%;
+  max-width: 100%; /* max-width 수정 */
+  min-width: 100%; /* min-width 수정 */
+}
+.inner--target--img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+
+.inner--text--wrap {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color: white;
+  gap: 20px;
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
+
+.inner--text {
+    text-align: center;
+    z-index: 3;
+}
+.inner--text:last-child {
+  font-size: 2rem;
+}
+
+.view--wrap {
+  overflow: hidden;
+  min-width: 1600px;
+  max-width: 1600px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center  ;
+}
+
+
+.inner--small--view {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));;
+  position: relative;
+  bottom: 63px;
+}
+
+
+.small--view--item {
+  width: 400px;
+  min-width: 400px;
+  height: 100%;
+}
+
+.small--view--img {
+  background-image: url("img/30주년 일러스트.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 70%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.prev,
+.next {
+  color: white;
+  opacity: 0.8;
 }

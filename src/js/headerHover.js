@@ -1,23 +1,33 @@
 const detail = document.querySelectorAll('.inner');
-const menuWrap = document.querySelector('.menu--wrap');
+const header = document.querySelector('header');
+const menuTitle = document.querySelectorAll('.menu--title');
 
-const hoverEvent = () => {
+const hoverEvent = (event) => {
+  event.stopPropagation()
    detail.forEach( element => {
      element.classList.add('opacity--one')
-     menuWrap.style.backgroundColor = 'rgba(54, 53, 53, 0.9)';
+     header.style.backgroundColor = 'rgba(54, 53, 53, 1)';
      element.addEventListener('mouseenter', hoverEvent)
+   });
+   menuTitle.forEach( (element,index) => {
+     if (index !== menuTitle.length -1) {
+       element.classList.add('border--right--white')
+     }
    });
 }
 
-const leaveEvent = () => {
+const leaveEvent = (event) => {
+  event.stopPropagation()
   detail.forEach( element => {
     element.classList.remove('opacity--one')
-    menuWrap.style.backgroundColor = '';
+    header.style.backgroundColor = '';
     element.addEventListener('mouseleave', leaveEvent)
   });
+  menuTitle.forEach( element => element.classList.remove('border--right--white'));
 }
 
-function headerHover () {
+
+const headerHover = () => {
   const titles = document.querySelectorAll('.title');
   titles.forEach( title => {
     title.addEventListener('mouseenter', hoverEvent);
