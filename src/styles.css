@@ -1,0 +1,30 @@
+@import "css/header.css";
+@import "css/utill.css";
+@import "css/event.css";
+
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
+
+:root {
+  --point-color: #ffa100;
+}
+
+* {
+  list-style-type:none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
