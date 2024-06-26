@@ -1,15 +1,19 @@
+import ImgSlider from "./ImgSlider.js";
+
 const viewImg = document.querySelectorAll('.small--view--img');
 const viewDes = document.querySelectorAll('.small--view--description');
 
 
 
-const clickEvent = (event, element) => {
+const clickEvent = async (event, element) => {
   const currentTarget = event.target;
   const prevElement = event.target.previousElementSibling;
   if (element.classList.contains('small--view--img')) {
     viewImg.forEach( element => element.classList.remove('focus--border'))
     currentTarget.classList.add('focus--border');
-    console.log(currentTarget.dataset.index)
+    const imgSlider = await ImgSlider();
+    imgSlider.setIndex(parseInt(currentTarget.dataset.index));
+    await imgSlider.start()
   } else {
     prevElement.classList.add('focus--border');
   }
