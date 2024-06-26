@@ -35,29 +35,22 @@ async function fetchImages() {
   }
 }
 
-const createDiv = (index) => {
+const createDiv = (count) => {
   const parent = document.querySelector('.inner--img');
-  for (let i = 0; i < index; i++) {
+  for (let i = 0; i < count; i++) {
     const targetImgElement = document.createElement('div');
     targetImgElement.setAttribute("class", "inner--target--img display--none");
     parent.appendChild(targetImgElement);
   }
-
 }
 
-
-
-const createEventMessage = (index) => {
+const updateEventMessage = (index) => {
   const {text: eventText, date: eventDate} = message;
   if (index > eventText.length) return;
   const textAll = document.querySelectorAll('.inner--text');
 
-  textAll.forEach((text, forIndex) => {
-    if (forIndex === 2) {
-      text.textContent = eventDate[index];
-    } else {
-      text.textContent = eventText[index][forIndex] || '';
-    }
+  textAll.forEach((element, i) => {
+    element.textContent = (i === 2) ? eventDate[index] : (eventText[index][i] || "");
   });
 
 }
@@ -84,29 +77,8 @@ const imgBinding = async () => {
     console.log(`Setting image for target ${index}: css/img/event/${imgRepository[index]}`);
   })
 
-
-  let index = 0;
-  let size = imgRepository.length;
-  const viewState = {isFirstIndex : true};
-  const bannerEffect = ["display--block"]
-  const smallViewEffect = ["focus--border"];
-  const opacityEffect = ["opacity--one"]
-  while (true) {
-
-    prevEffectOffBanner(index,  bannerView);
-    smallViewTranslate(viewState, index,size);
-    prevEffectOffSmallView(index,  smallView)
-
-    bannerView[index].classList.remove('display--none');
-    await delay(50);
-    createEventMessage(index);
-    addEffectView(bannerView, index, [...bannerEffect, ...opacityEffect]);
-    addEffectView(smallView, index,  [...smallViewEffect, ...opacityEffect]);
-    index = (index + 1) % size;
-    await delay(3000); // 지연을 위해 delay 함수 사용
-  }
+  imgSliderService(bannerView, smallView, imgRepository.length);
 }
-
 
 const addEffectView = (view, index, [optionA, optionB]) => {
   view[index].classList.add(optionA);
@@ -153,6 +125,28 @@ const prevEffectOffBanner = (index, view) => {
   } else {
     view[index - 1].classList.remove('opacity--one');
     setTimeout(() => view[index - 1].classList.remove('display--block'), 1000);
+  }
+}
+
+const imgSliderService = async (bannerView, smallView, size) => {
+  let index = 0;
+  const viewState = { isFirstIndex: true };
+  const bannerEffect = ["display--block"];
+  const smallViewEffect = ["focus--border"];
+  const opacityEffect = ["opacity--one"];
+
+  while (true) {
+    prevEffectOffBanner(index, bannerView);
+    smallViewTranslate(viewState, index, size);
+    prevEffectOffSmallView(index, smallView);
+
+    bannerView[index].classList.remove('display--none');
+    await delay(50);
+    updateEventMessage(index);
+    addEffectView(bannerView, index, [...bannerEffect, ...opacityEffect]);
+    addEffectView(smallView, index, [...smallViewEffect, ...opacityEffect]);
+    index = (index + 1) % size;
+    await delay(3000); // 지연을 위해 delay 함수 사용
   }
 }
 
