@@ -40,6 +40,7 @@ const createDiv = (count) => {
   for (let i = 0; i < count; i++) {
     const targetImgElement = document.createElement('div');
     targetImgElement.setAttribute("class", "inner--target--img display--none");
+    targetImgElement.dataset.index = i.toString();
     parent.appendChild(targetImgElement);
   }
 }
@@ -54,9 +55,9 @@ const updateEventMessage = (index) => {
   });
 
 }
-
-
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+
 
 const imgBinding = async () => {
   const imgRepository = await fetchImages();
@@ -69,12 +70,12 @@ const imgBinding = async () => {
 
   bannerView.map( (element, index) => {
     element.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
-    console.log(`Setting image for target ${index}: css/img/event/${imgRepository[index]}`);
+    console.log(`완료 ${index}: css/img/event/${imgRepository[index]}`);
   })
 
   smallView.map( (element, index) => {
     element.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
-    console.log(`Setting image for target ${index}: css/img/event/${imgRepository[index]}`);
+    console.log(`완료 ${index}: css/img/event/${imgRepository[index]}`);
   })
 
   imgSliderService(bannerView, smallView, imgRepository.length);
@@ -146,9 +147,8 @@ const imgSliderService = async (bannerView, smallView, size) => {
     addEffectView(bannerView, index, [...bannerEffect, ...opacityEffect]);
     addEffectView(smallView, index, [...smallViewEffect, ...opacityEffect]);
     index = (index + 1) % size;
-    await delay(3000); // 지연을 위해 delay 함수 사용
+    await delay(3000);
   }
 }
-
 
 imgBinding();

@@ -1,6 +1,10 @@
 section {
   width: 100%;
   height: 28%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .event--wrap {
   width: 100%;
@@ -44,14 +48,14 @@ section {
   font-size: 5rem;
   color: white;
   gap: 20px;
-  margin-left: 200px;
+  margin-left: 350px;
   margin-top: 50px;
 }
 
 
 .inner--text {
     text-align: center;
-    z-index: 3;
+    z-index: 1;
 }
 .inner--text:last-child {
   font-size: 2rem;
@@ -59,7 +63,7 @@ section {
 /* 작은 이미지 */
 
 .inner--small--view {
-  width: 100%;
+  width: 80%;
   height: 18%;
   display: flex;
   justify-content: center;
@@ -81,6 +85,8 @@ section {
   display: flex;
 }
 
+
+
 .small--view--description {
   width: 200px;
   display: flex;
@@ -89,6 +95,7 @@ section {
   justify-content: center;
   color:white;
   font-size: 1.3rem;
+  opacity: 0.5;
 }
 
 .small--view--img {
@@ -99,7 +106,13 @@ section {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.5;
-  transition: opacity .3s ease;
+  transition: opacity 1s ease;
+}
+.small--view--img:hover {
+  opacity: 1;
+}
+.small--view--description:hover {
+  opacity: 1;
 }
 
 
