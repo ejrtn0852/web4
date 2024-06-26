@@ -88,6 +88,9 @@ const imgBinding = async () => {
   let index = 0;
   let size = imgRepository.length;
   const viewState = {isFirstIndex : true};
+  const bannerEffect = ["display--block"]
+  const smallViewEffect = ["focus--border"];
+  const opacityEffect = ["opacity--one"]
   while (true) {
 
     prevEffectOffBanner(index,  bannerView);
@@ -97,20 +100,17 @@ const imgBinding = async () => {
     bannerView[index].classList.remove('display--none');
     await delay(50);
     createEventMessage(index);
-    smallView[index].classList.add("focus--border");
-    smallView[index].classList.add("opacity--one");
-    bannerView[index].classList.add('display--block');
-    bannerView[index].classList.add('opacity--one');
+    addEffectView(bannerView, index, [...bannerEffect, ...opacityEffect]);
+    addEffectView(smallView, index,  [...smallViewEffect, ...opacityEffect]);
     index = (index + 1) % size;
     await delay(3000); // 지연을 위해 delay 함수 사용
   }
 }
 
-const bannerEffect = ["display--block"]
 
-const addEffectView = (bannerView, index, classToAdd) => {
-  bannerView[index].classList.add('display--block');
-  bannerView[index].classList.add('opacity--one');
+const addEffectView = (view, index, [optionA, optionB]) => {
+  view[index].classList.add(optionA);
+  view[index].classList.add(optionB);
 }
 
 
