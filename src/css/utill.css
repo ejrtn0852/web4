@@ -16,3 +16,14 @@
 .display--block {
   display: block;
 }
+
+.focus--border {
+  border: 3px solid var(--point-color);
+}
+
+.translateX--1600 {
+  transform: translateX(-1600px);
+}
+.translateX--zero {
+  transform: translateX(-0px);
+}

@@ -73,7 +73,6 @@ section {
 }
 .view--wrap {
   display: flex;
-  transform: translateX(-1600px);
   transition: transform .5s ease-in-out;
 }
 .small--view--item {
@@ -99,6 +98,8 @@ section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 0.5;
+  transition: opacity .3s ease;
 }
 
 

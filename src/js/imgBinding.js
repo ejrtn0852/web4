@@ -46,48 +46,6 @@ const createDiv = (index) => {
 }
 
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-const imgBinding = async () => {
-  const imgRepository = await fetchImages();
-
-  if (!imgRepository) return;
-
-  createDiv(imgRepository.length);
-  const target = document.querySelectorAll('.inner--target--img');
-  const targetAll = [...target];
-
-  for (const [index, targetElement] of targetAll.entries()) {
-    if (imgRepository[index]) {
-      targetElement.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
-      console.log(`Setting image for target ${index}: css/img/event/${imgRepository[index]}`);
-    } else {
-      console.log(`No image for target ${index}`);
-    }
-  }
-
-  let index = 0;
-  let size = imgRepository.length;
-  while (true) {
-    if (index === 0) {
-      targetAll[size - 1].classList.remove('opacity--one');
-      setTimeout(() => targetAll[size - 1].classList.remove('display--block'), 1000);
-    } else {
-      targetAll[index - 1].classList.remove('opacity--one');
-      setTimeout(() => targetAll[index - 1].classList.remove('display--block'), 1000);
-    }
-
-    targetAll[index].classList.remove('display--none');
-    await delay(50);
-    createEventMessage(index);
-    targetAll[index].classList.add('display--block');
-    targetAll[index].classList.add('opacity--one');
-    index = (index + 1) % size;
-    await delay(3000); // 지연을 위해 delay 함수 사용
-  }
-}
-
-
 
 const createEventMessage = (index) => {
   const {text: eventText, date: eventDate} = message;
@@ -103,5 +61,100 @@ const createEventMessage = (index) => {
   });
 
 }
+
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+const imgBinding = async () => {
+  const imgRepository = await fetchImages();
+
+  if (!imgRepository) return;
+
+  createDiv(imgRepository.length);
+  const bannerView = Array.from(document.querySelectorAll('.inner--target--img'));
+  const smallView = Array.from(document.querySelectorAll('.small--view--img'));
+
+  bannerView.map( (element, index) => {
+    element.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
+    console.log(`Setting image for target ${index}: css/img/event/${imgRepository[index]}`);
+  })
+
+  smallView.map( (element, index) => {
+    element.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
+    console.log(`Setting image for target ${index}: css/img/event/${imgRepository[index]}`);
+  })
+
+
+  let index = 0;
+  let size = imgRepository.length;
+  const viewState = {isFirstIndex : true};
+  while (true) {
+
+    prevEffectOffBanner(index,  bannerView);
+    smallViewTranslate(viewState, index,size);
+    prevEffectOffSmallView(index,  smallView)
+
+    bannerView[index].classList.remove('display--none');
+    await delay(50);
+    createEventMessage(index);
+    smallView[index].classList.add("focus--border");
+    smallView[index].classList.add("opacity--one");
+    bannerView[index].classList.add('display--block');
+    bannerView[index].classList.add('opacity--one');
+    index = (index + 1) % size;
+    await delay(3000); // 지연을 위해 delay 함수 사용
+  }
+}
+
+const bannerEffect = ["display--block"]
+
+const addEffectView = (bannerView, index, classToAdd) => {
+  bannerView[index].classList.add('display--block');
+  bannerView[index].classList.add('opacity--one');
+}
+
+
+const smallViewTranslate = (viewState, index, size) => {
+  const viewWrap = document.querySelector('.view--wrap');
+  const firstIndex = 0;
+  const middleIndex = 4;
+
+
+  if (viewState.isFirstIndex) {
+    viewState.isFirstIndex = false;
+    return;
+  }
+  if (index === firstIndex && !viewState.isFirstIndex) {
+    viewWrap.classList.remove('translateX--1600');
+    viewWrap.classList.add('translateX--zero');
+  } else if (index === middleIndex) {
+    viewWrap.classList.add('translateX--1600');
+    viewWrap.classList.remove('translateX--zero');
+  }
+}
+
+const prevEffectOffSmallView = (index, view) => {
+  let size = view.length;
+  if (index === 0) {
+    view[size - 1].classList.remove('opacity--one');
+    view[size - 1].classList.remove('focus--border')
+  } else {
+    view[index - 1].classList.remove('opacity--one');
+    view[index - 1].classList.remove('focus--border')
+  }
+}
+
+
+const prevEffectOffBanner = (index, view) => {
+  let size = view.length;
+  if (index === 0) {
+    view[size - 1].classList.remove('opacity--one');
+    setTimeout(() => view[size - 1].classList.remove('display--block'), 1000);
+  } else {
+    view[index - 1].classList.remove('opacity--one');
+    setTimeout(() => view[index - 1].classList.remove('display--block'), 1000);
+  }
+}
+
 
 imgBinding();
