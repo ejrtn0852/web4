@@ -7,7 +7,6 @@ const dirName = path.dirname(fileName);
 
 const directoryPath = path.join(dirName, 'src/css/img/event');
 const outputPath = path.join(dirName, 'images.json');
-console.log(directoryPath)
 
 fs.readdir(directoryPath, (err, files) => {
   const images = files.filter( file => {

@@ -56,49 +56,107 @@ section {
 .inner--text:last-child {
   font-size: 2rem;
 }
-
-.view--wrap {
-  overflow: hidden;
-  min-width: 1600px;
-  max-width: 1600px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center  ;
-}
-
+/* 작은 이미지 */
 
 .inner--small--view {
   width: 100%;
-  height: 12%;
+  height: 18%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));;
-  position: relative;
-  bottom: 63px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
 }
 
-
+.view--container {
+  width: 1600px;
+  overflow: hidden;
+}
+.view--wrap {
+  display: flex;
+  transform: translateX(-1600px);
+  transition: transform .5s ease-in-out;
+}
 .small--view--item {
   width: 400px;
-  min-width: 400px;
   height: 100%;
+  display: flex;
+}
+
+.small--view--description {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  font-size: 1.3rem;
 }
 
 .small--view--img {
-  background-image: url("img/30주년 일러스트.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  width: 200px;
+  height: 100px;
+  background-image: url("img/event/event1.jpg");
+  background-size: cover;
   background-position: center;
-  width: 70%;
-  height: 100%;
-  opacity: 0.5;
+  background-repeat: no-repeat;
 }
 
-.prev,
-.next {
-  color: white;
-  opacity: 0.8;
-}
+
+
+
+/*.view--wrap {*/
+/*  overflow: hidden;*/
+/*  min-width: 1600px;*/
+/*  max-width: 1600px;*/
+/*  height: 100%;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  text-align: center  ;*/
+/*}*/
+
+
+/*.inner--small--view {*/
+/*  width: 100%;*/
+/*  height: 12%;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));;*/
+/*  position: relative;*/
+/*  bottom: 63px;*/
+/*}*/
+
+
+/*.small--view--item {*/
+/*  width: 400px;*/
+/*  min-width: 400px;*/
+/*  height: 100%;*/
+/*  display: flex;*/
+/*  white-space: nowrap;*/
+
+/*}*/
+
+/*.small--view--img {*/
+/*  background-image: url("img/30주년 일러스트.png");*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: contain;*/
+/*  background-position: center;*/
+/*  width: 70%;*/
+/*  height: 100%;*/
+/*  opacity: 0.5;*/
+/*}*/
+/*.small--view--description {*/
+/*  width: 200px;*/
+/*  color: white;*/
+/*  height: 100%;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+/*.prev,*/
+/*.next {*/
+/*  color: white;*/
+/*  opacity: 0.8;*/
+/*}*/
