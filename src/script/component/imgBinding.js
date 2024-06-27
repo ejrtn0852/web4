@@ -1,4 +1,3 @@
-import Element from "./Element.js";
 import fetchImages from "../fetcher/ImageFetchs.js";
 
 const StartBind = async () => {

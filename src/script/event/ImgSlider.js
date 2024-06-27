@@ -1,17 +1,35 @@
 import delay from "../utill/Delay.js";
 
-const ImgSlider = async () => {
-  let index = 0;
-  let viewState = true;
-  const bannerEffect = ["display--block"];
-  const smallViewEffect = ["focus--border"];
-  const opacityEffect = ["opacity--one"];
+//  동시성, 병렬성 CPU 바운드, I/O 바운드
 
-  const setIndex = (currentIndex) => {
-    index = currentIndex;
-  }
+const sliderState = {
+  viewState: true,
+}
+
+const indexManger = {
+  index: 0
+}
+
+const intervalManager  = {
+  intervalId: ""
+};
+
+const EffectState = {
+  opacityEffect : ["opacity--one"],
+  focusEffect: ["focus--border"]
+};
+
+
+
+const ImgSlider = () => {
+  const bannerView = document.querySelectorAll('.inner--target--img');
+  const smallView = document.querySelectorAll('.small--view--img');
 
   const addEffectView = (view, index, [optionA, optionB]) => {
+    if (!optionB) {
+      view[index].classList.add(optionA);
+      return;
+    }
     view[index].classList.add(optionA);
     view[index].classList.add(optionB);
   }
@@ -20,9 +38,11 @@ const ImgSlider = async () => {
     const viewWrap = document.querySelector('.view--wrap');
     const firstIndex = 0;
     const middleIndex = 4;
+    const {viewState} = sliderState;
+    const {index} = indexManger;
 
     if (viewState) {
-      viewState = false;
+      sliderState.viewState = false;
       return;
     }
     if (index === firstIndex && !viewState) {
@@ -56,26 +76,51 @@ const ImgSlider = async () => {
     }
   }
 
-  const start = async () => {
-    const bannerView = document.querySelectorAll('.inner--target--img');
-    const smallView = document.querySelectorAll('.small--view--img');
-    while (true) {
-      prevEffectOffBanner(index, bannerView);
-      smallViewTranslate();
-      prevEffectOffSmallView(index, smallView);
+  const closeAllEffect = () => {
+    const element = document.querySelector(`[data-index="${indexManger.index - 1}"]`);
+    element.classList.remove('opacity--one');
+  }
 
-      bannerView[index].classList.remove('display--none');
-      await delay(50);
-      addEffectView(bannerView, index, [...bannerEffect, ...opacityEffect]);
-      addEffectView(smallView, index, [...smallViewEffect, ...opacityEffect]);
-      index = (index + 1) % bannerView.length;
-      await delay(3000);
-    }
+  const reRunProcess = async (index) => {
+    closeAllEffect();
+    clearInterval(intervalManager.intervalId);
+    indexManger.index = index;
+    await start();
+  }
+
+  const process = async () => {
+    const {index} = indexManger;
+    const { opacityEffect, focusEffect} = EffectState;
+
+    prevEffectOffBanner(index, bannerView);
+    smallViewTranslate();
+    prevEffectOffSmallView(index, smallView);
+
+    bannerView[index].classList.remove('display--none');
+    await delay(50);
+    addEffectView(bannerView, index, [ ...opacityEffect]);
+    addEffectView(smallView, index, [...focusEffect, ...opacityEffect]);
+    indexManger.index = (indexManger.index + 1) % bannerView.length;
+  }
+
+  const start = async () => {
+    await process();
+    intervalManager.intervalId = setInterval(process,  3000);
+  }
+
+  const addEventHandlers = () => {
+    smallView.forEach( element => {
+      element.addEventListener("click", async(event) => {
+        const target = event.target;
+        await reRunProcess(parseInt(target.dataset.index));
+      })
+    })
   }
 
   return {
     start,
-    setIndex
+    reRunProcess,
+    addEventHandlers,
   }
 }
 export default ImgSlider;

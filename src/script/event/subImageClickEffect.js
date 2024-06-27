@@ -11,9 +11,6 @@ const clickEvent = async (event, element) => {
   if (element.classList.contains('small--view--img')) {
     viewImg.forEach( element => element.classList.remove('focus--border'))
     currentTarget.classList.add('focus--border');
-    const imgSlider = await ImgSlider();
-    imgSlider.setIndex(parseInt(currentTarget.dataset.index));
-    await imgSlider.start()
   } else {
     prevElement.classList.add('focus--border');
   }
