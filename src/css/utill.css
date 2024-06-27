@@ -27,3 +27,7 @@
 .translateX--zero {
   transform: translateX(-0px);
 }
+
+.translateX--800 {
+  transform: translateX(800px);
+}

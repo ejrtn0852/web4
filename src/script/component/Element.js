@@ -18,7 +18,7 @@ const Element = () => {
     const parent = document.querySelector('.inner--img');
     for (let i = 0; i < count; i++) {
       const targetImgElement = document.createElement('li');
-      targetImgElement.setAttribute("class", "inner--target--img display--none");
+      targetImgElement.setAttribute("class", "inner--target--img");
       targetImgElement.dataset.index = i.toString();
       parent.appendChild(targetImgElement);
     }
