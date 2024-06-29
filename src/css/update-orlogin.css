@@ -4,23 +4,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 16px;
 }
-
-.login--update {
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-  align-items: center;
-  background-color: #252428;
-  height: 100%;
-}
-
 
 .login--update {
   display: flex;
   min-width: 2000px;
   max-width: 1200px;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+  background-color: #252428;
+  height: 100%;
+  min-height: 200px;
+  max-height: 200px;
 }
+
+
 
 .update--img {
   width: 150px;

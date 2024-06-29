@@ -21,6 +21,8 @@ section {
   height: 100%;
   max-width: 2400px;
   min-width: 2400px;
+  min-height: 500px;
+  max-height: 500px;
 }
 .inner--target--img {
   position: absolute;
@@ -71,6 +73,7 @@ section {
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
+  z-index: 1;
 }
 
 .view--container {
