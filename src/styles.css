@@ -1,7 +1,13 @@
 @import "css/header.css";
 @import "css/utill.css";
 @import "css/event.css";
-
+@import "css/update-orlogin.css";
+@import "css/notice.css";
+@import "css/side-notice.css";
+@import "css/nav-introduction.css";
+@import "css/game-information.css";
+@import "css/art.css";
+@import "css/footer.css";
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 

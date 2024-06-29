@@ -1,4 +1,4 @@
-import {prev,next} from "../utill/utill.js"
+import {prev,next} from "./utill.js"
 
 const smallView = document.querySelectorAll('.small--view--img');
 const mappingMap = new Map();

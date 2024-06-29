@@ -1,0 +1,200 @@
+.login--update--aside {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login--update {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+  background-color: #252428;
+  height: 100%;
+}
+
+
+.login--update {
+  display: flex;
+  min-width: 2000px;
+  max-width: 1200px;
+}
+
+.update--img {
+  width: 150px;
+  height: 140px;
+  background-image: url("img/주요 업데이트 정보.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.update {
+  display: flex;
+}
+
+
+.update--text--wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+.update--text--wrap span {
+  font-size: 1.2rem;
+}
+.update--text--wrap span:first-child {
+  font-size: 2rem;
+  color: var(--point-color);
+  font-weight: bolder;
+}
+.update--text--wrap span:last-child {
+  color: white;
+  font-size: 1.2rem;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+  height: 150px;
+}
+.nexon--or--maple {
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+}
+.nexon--or--maple span:first-child {
+  width: 300px;
+  height: 50px;
+  background-color:#3b75d2 ;
+  text-align: center;
+  line-height: 30px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nexon--or--maple span:last-child {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:var(--point-color) ;
+  text-align: center;
+  padding: 30px;
+}
+.qr--or--different {
+  display: flex;
+  font-size: 1.2rem;
+}
+.qr--or--different span:first-child{
+  background-color: #222;
+  width: 250px;
+  height: 30px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 1px solid rgba(0,0,0,0.8);
+}
+.qr--or--different span:last-child{
+  background-color: #222;
+  width: 250px;
+  height: 30px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 1px solid rgba(0,0,0,0.8)
+}
+.login--update--aside *span {
+  cursor: pointer;
+}
+
+.gameStart {
+  font-size: 4rem;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bolder;
+  border: 1px solid tomato;
+  width: 300px;
+  height: 100px;
+  background: var(--point-color);
+  color: white;
+  border-radius: 15px;
+  padding: 0;
+  margin: 0;
+}
+.gameStart:hover {
+  -webkit-animation: jello-horizontal 0.9s both;
+  animation: jello-horizontal 0.9s both;
+}
+
+.jello-horizontal {
+}
+
+@-webkit-keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}

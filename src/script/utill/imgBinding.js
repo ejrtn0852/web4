@@ -9,12 +9,13 @@ const StartBind = async () => {
     const smallView = document.querySelectorAll('.small--view--img');
     if (!imgRepository) return;
 
-    bannerView.forEach( (element, index) => {
-      element.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
-    })
 
+    bannerView.forEach( (element, index) => {
+      element.style.backgroundImage = `url("src/css/img/event/${imgRepository[index]}")`;
+
+    })
     smallView.forEach( (element, index) => {
-      element.style.backgroundImage = `url("css/img/event/${imgRepository[index]}")`;
+      element.style.backgroundImage = `url("src/css/img/event/${imgRepository[index]}")`;
     })
   }
 

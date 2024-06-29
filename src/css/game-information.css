@@ -1,0 +1,103 @@
+.game--information {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game--wrap {
+  min-width: 1600px;
+  max-width: 1600px;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game--items {
+  cursor: pointer;
+}
+
+.game--information--text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.game--information--link {
+  width: 200px;
+  height: 70px;
+  border-radius: 15px;
+  color: white;
+  background-color: #46425a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+.game--information--link span span {
+  background-color: gray;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 30px;
+}
+
+.game--text {
+  border-radius: 15px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.game--text span:first-child {
+  font-size: 2rem;
+}
+.background--first {
+  background: #576caf;
+}
+.background--second {
+  background: #417591;
+}
+.background--third {
+  background: #557ac0;
+}
+
+
+.level--up {
+  background-image: url("img/레벨업 가이드.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.five {
+  background-image: url("img/5차 스킬.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.green--pc {
+  background-image: url("img/그린 PC.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.plus {
+  background-color: gray;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 1.2rem;
+
+}

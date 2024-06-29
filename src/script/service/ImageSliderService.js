@@ -1,6 +1,6 @@
-import Element from "./Element.js";
-import StartBind from "./imgBinding.js";
-import Message from "./message.js";
+import Element from "../component/Element.js";
+import StartBind from "../utill/imgBinding.js";
+import Message from "../component/message.js";
 import ImgSlider from "../event/ImgSlider.js";
 
 const ImageSliderService = async () => {

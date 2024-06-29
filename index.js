@@ -5,7 +5,7 @@ import {fileURLToPath} from 'url';
 const fileName = fileURLToPath(import.meta.url);
 const dirName = path.dirname(fileName);
 
-const directoryPath = path.join(dirName, 'src/css/img/event');
+const directoryPath = path.join(dirName, 'src/css/img/eventimg');
 const outputPath = path.join(dirName, 'images.json');
 
 fs.readdir(directoryPath, (err, files) => {

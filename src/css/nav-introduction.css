@@ -1,0 +1,83 @@
+.nav--look {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+}
+
+
+.nav--items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav--text--container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav--navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.nav--img--container {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 30px;
+}
+
+.nav--img--item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.nav--img {
+  background-image: url("img/새싹용사 내비1.png ");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 20px;
+/*  이미지 중복 로직 */
+}
+
+.nav--inner--text {
+  font-size: 2rem;
+}
+
+.nav--img--illustration1 {
+  background-image: url("img/새싹용사 내비1.png ");
+}
+.nav--img--illustration2 {
+  background-image: url("img/새싹용사 내비2.png ");
+}
+.nav--img--illustration3 {
+  background-image: url("img/콜라보1.png ");
+}
+.nav--img--illustration4 {
+  background-image: url("img/콜라보2.png ");
+}
+.nav--text:first-child {
+  font-size: 3rem;
+  font-weight: 500;
+}
+.nav--text:last-child {
+  font-size: 1.5rem;
+  color: rgba(0,0,0,0.6);
+}
+
+
+

@@ -1,8 +1,8 @@
 import delay from "../utill/Delay.js";
-import ClassNameProcessor from "./ClassResoiver.js";
+import ClassNameProcessor from "../utill/ClassResoiver.js";
 import { prev} from "../utill/utill.js";
-import AddEffectAdapter from "./AddEffectAdapter.js";
-import NavigationAdapter from "./NavigationAdapter.js";
+import AddEffectAdapter from "../utill/AddEffectAdapter.js";
+import NavigationAdapter from "../utill/NavigationAdapter.js";
 
 //  동시성, 병렬성 CPU 바운드, I/O 바운드
 
@@ -44,12 +44,9 @@ const ImgSlider = () => {
     }
   };
 
-
   const smallViewTranslate = () => {
-    // 여기만 수정하면 이미지슬라이드 끝
     const firstIndex = 0;
     const middleIndex = 4;
-    const lastIndex = smallView.length -1;
     const {viewState} = sliderState;
     const {index} = indexManger;
 
@@ -63,10 +60,41 @@ const ImgSlider = () => {
     } else if (index === middleIndex) {
       viewWrap.classList.add('translateX--1600');
       viewWrap.classList.remove('translateX--zero');
-    } else if (index === lastIndex) {
-      viewWrap.classList.add('translateX--1600');
     }
   }
+
+  const leftTranslate = () => {
+    const {viewState} = sliderState;
+    const lastIndex = 7;
+    const {index} = indexManger;
+
+    if (viewState) {
+      sliderState.viewState = false;
+      return;
+    }
+
+    if (index === lastIndex) {
+      viewWrap.classList.add('translateX--1600');
+      viewWrap.classList.remove('translateX--zero');
+    }
+  }
+
+  const rightTranslate = () => {
+    const breakIndex = 0;
+    const {viewState} = sliderState;
+    const {index} = indexManger;
+
+    if (viewState) {
+      sliderState.viewState = false;
+      return;
+    }
+
+    if (index === breakIndex) {
+      viewWrap.classList.remove('translateX--1600');
+      viewWrap.classList.add('translateX--zero');
+    }
+  }
+
 
   const removeEffects = (element, [effectA, effectB]) => {
     element.classList.remove(effectA);
@@ -87,19 +115,25 @@ const ImgSlider = () => {
     indexManger.index = index;
     await start();
   }
-  const restartProcess = async (index) => {
 
+  const restartProcess = async (index, classes) => {
     clearInterval(intervalManager.intervalId);
     indexManger.index = index;
-    await start();
+    await start(classes);
   }
 
-  const process = async () => {
+  const process = async (classes) => {
     const { index} = indexManger;
     const { opacityEffect, focusEffect} = EffectState;
     const prevIndex = prev(bannerView,indexManger.index);
 
     removeEffects(bannerView[prevIndex], [opacityEffect]);
+    if (classes === 'next') {
+      rightTranslate();
+    } else if (classes === 'prev') {
+      console.log(classes)
+      leftTranslate();
+    }
     smallViewTranslate();
     removeEffects(smallView[prevIndex], [opacityEffect, focusEffect]);
 
@@ -109,8 +143,9 @@ const ImgSlider = () => {
     indexManger.index = (indexManger.index + 1) % bannerView.length;
   }
 
-  const start = async (index) => {
-    await process(index)
+
+  const start = async (classes) => {
+    await process(classes)
     intervalManager.intervalId = setInterval(process,  3000);
   }
 
@@ -122,19 +157,20 @@ const ImgSlider = () => {
   const buttonEffectHandler = async (event) => {
     const { opacityEffect, focusEffect} = EffectState;
     const currentSlider = document.querySelector('.small--view--img.focus--border.opacity--one');
+    console.log(currentSlider)
     const currentIndex = parseInt(currentSlider.dataset.index);
     const currentTarget = tagResolver(event.currentTarget);
+    console.log(currentIndex)
     removeEffects(smallView[currentIndex], [opacityEffect, focusEffect]);
 
     const addEffectAdapter = AddEffectAdapter();
     const addHandler = addEffectAdapter.supports(currentTarget);
 
     const pointer = addHandler(smallView, currentIndex, [opacityEffect,focusEffect]);
-
     const navigationAdapter = NavigationAdapter();
     const getIndexHandler = navigationAdapter.supports(currentTarget);
     const index = getIndexHandler(pointer);
-    await restartProcess(index);
+    await restartProcess(index, currentTarget);
   }
 
   const addEventHandlers = () => {
