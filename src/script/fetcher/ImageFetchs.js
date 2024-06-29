@@ -1,6 +1,6 @@
 const fetchImages = async () => {
   try {
-    const response = await fetch(`/web4/images.json`);
+    const response = await fetch(`/images.json`);
     if (!response.ok) {
       throw new Error('Network response was not ok ' + response.statusText);
     }
