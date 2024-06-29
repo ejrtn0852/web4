@@ -44,14 +44,17 @@
 
 
 .nav--img {
-  background-image: url("img/새싹용사 내비1.png ");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 300px;
   height: 200px;
   margin-bottom: 20px;
+  transition: all 1s ease-in-out;
 /*  이미지 중복 로직 */
+}
+.nav--img:hover {
+  transform: scale(1.1);
 }
 
 .nav--inner--text {
