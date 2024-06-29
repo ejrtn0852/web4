@@ -103,7 +103,6 @@ section {
 .small--view--img {
   width: 200px;
   height: 100px;
-  background-image: url("img/eventimg/event1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
