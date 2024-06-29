@@ -2,7 +2,7 @@ import fetchImages from "../fetcher/ImageFetchs.js";
 
 const StartBind = async () => {
 
-  const imgRepository = await fetchImages();
+  const imgRepository = fetchImages();
 
   const bindImage = () => {
     const bannerView = document.querySelectorAll('.inner--target--img');
